@@ -29,24 +29,26 @@ A modern, responsive website for CosmoSecure - a robust and secure password mana
 
 1. Clone the repository
 2. Install dependencies:
-   \`\`\`bash
+
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 3. Set up Clerk authentication:
    - Sign up for a free account at [Clerk](https://clerk.com)
    - Create a new application in the [Clerk Dashboard](https://dashboard.clerk.com)
    - Copy your API keys from the dashboard
    - Create a `.env.local` file and add your keys:
-     \`\`\`
+   
+     ```bash
      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_publishable_key_here
      CLERK_SECRET_KEY=sk_test_your_secret_key_here
-     \`\`\`
+     ```
 
 4. Run the development server:
-   \`\`\`bash
+   ```bash
    npm run dev
-   \`\`\`
+   ```
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
