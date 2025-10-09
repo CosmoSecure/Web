@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Navigation } from "@/components/navigation"
+import { AuthNavigation } from "@/components/auth-navigation"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Download, Shield, Lock, Zap, CheckCircle2, ChevronDown, X } from "lucide-react"
@@ -64,7 +64,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background relative">
-      <Navigation />
+      <AuthNavigation />
 
       {/* Distribution Selector Modal */}
       {showDistroSelector && (

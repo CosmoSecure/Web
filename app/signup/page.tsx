@@ -1,4 +1,4 @@
-import { Navigation } from "@/components/navigation"
+import { AuthNavigation } from "@/components/auth-navigation"
 import { SignupForm } from "@/components/signup-form"
 import { Shield } from "lucide-react"
 import { DOCS, SUPPORT, NAVIGATION } from "@/config/links"
@@ -6,7 +6,7 @@ import { DOCS, SUPPORT, NAVIGATION } from "@/config/links"
 export default function SignupPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Navigation />
+      <AuthNavigation />
 
       <section className="flex-1 flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
         <div className="w-full max-w-md mx-auto">

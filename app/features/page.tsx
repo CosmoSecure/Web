@@ -1,4 +1,4 @@
-import { Navigation } from "@/components/navigation"
+import { AuthNavigation } from "@/components/auth-navigation"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Shield } from "lucide-react"
@@ -46,7 +46,7 @@ const features = [
 export default function FeaturesPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <AuthNavigation />
 
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-6xl mx-auto">

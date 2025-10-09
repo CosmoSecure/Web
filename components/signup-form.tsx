@@ -158,7 +158,7 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
             if (isSignedIn) {
                 await signOut()
                 // Wait a moment for the signout to complete
-                await new Promise(resolve => setTimeout(resolve, 100))
+                await new Promise(resolve => setTimeout(resolve, 300))
             }
 
             // Step 1: Create Clerk user for email verification
@@ -170,17 +170,18 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
                 username: formData.username,
             })
 
-            // Step 2: Send email verification (optimized - removed await to speed up)
-            signUp.prepareEmailAddressVerification({
-                strategy: "email_code"
-            }).then(() => {
-                setPendingVerification(true)
-                setIsLoading(false)
-            }).catch((err) => {
-                console.error('Email preparation error:', err)
-                setPendingVerification(true) // Still show verification screen
-                setIsLoading(false)
-            })
+            // Step 2: Send email verification
+            try {
+                await signUp.prepareEmailAddressVerification({
+                    strategy: "email_code"
+                })
+            } catch (emailError) {
+                console.error('Email preparation error:', emailError)
+                // Continue anyway - user can still try to verify
+            }
+
+            setPendingVerification(true)
+            setIsLoading(false)
 
         } catch (err: any) {
             console.error('Signup error:', err)
@@ -189,15 +190,31 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
             if (err.errors) {
                 const error = err.errors[0]
                 if (error.code === 'session_exists' || error.message?.includes('already signed in')) {
-                    // Clear everything and try again
+                    // Clear session and continue with signup flow
                     try {
                         await signOut()
-                        await new Promise(resolve => setTimeout(resolve, 200))
+                        await new Promise(resolve => setTimeout(resolve, 500))
+
                         // Retry the signup after clearing session
-                        window.location.reload()
+                        const retrySignUp = await signUp.create({
+                            emailAddress: formData.email,
+                            password: formData.password,
+                            firstName: formData.name.split(' ')[0],
+                            lastName: formData.name.split(' ').slice(1).join(' ') || '',
+                            username: formData.username,
+                        })
+
+                        // Prepare email verification
+                        await signUp.prepareEmailAddressVerification({
+                            strategy: "email_code"
+                        })
+
+                        setPendingVerification(true)
+                        setIsLoading(false)
                         return
-                    } catch (signOutError) {
-                        setError('Please refresh the page and try again.')
+                    } catch (retryError) {
+                        console.error('Retry signup error:', retryError)
+                        setError('Please sign out from the navigation bar and try again.')
                     }
                 }
                 const errorMessage = error.message || 'Error creating account'
@@ -271,12 +288,22 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
                 if (error.code === 'verification_failed') {
                     setError('Invalid verification code. Please check and try again.')
                 } else if (error.code === 'session_exists') {
-                    // Session already exists - this might be okay, proceed
-                    setSuccess('Account verified successfully!')
-                    setTimeout(() => {
-                        router.push('/features')
-                        onSuccess?.()
-                    }, 1000)
+                    // Session already exists - try to set it active
+                    try {
+                        if (signUp.createdSessionId) {
+                            await setActive({ session: signUp.createdSessionId })
+                        }
+                        setSuccess('Account verified successfully!')
+                        setTimeout(() => {
+                            router.push('/features')
+                            onSuccess?.()
+                        }, 1000)
+                        return
+                    } catch (sessionError) {
+                        console.warn('Session activation error:', sessionError)
+                        setError('Account created but session error. Please sign in manually.')
+                        return
+                    }
                 } else {
                     setError(error.message || 'Verification failed')
                 }
@@ -343,6 +370,9 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
                     <p className="text-muted-foreground text-xs sm:text-sm px-2">
                         We've sent a verification code to <strong className="break-all">{formData.email}</strong>
                     </p>
+                    <p className="text-muted-foreground text-xs px-2 mt-2">
+                        Check your email inbox and spam folder for the 6-digit code.
+                    </p>
                 </div>
 
                 <form onSubmit={handleVerifyEmail} className="space-y-4 sm:space-y-6">
@@ -392,27 +422,53 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
                         )}
                     </Button>
 
-                    <Button
-                        type="button"
-                        variant="ghost"
-                        className="w-full text-sm sm:text-base"
-                        onClick={async () => {
-                            setPendingVerification(false)
-                            setVerificationCode('')
-                            setError('')
-                            // Clear any existing sessions to start fresh
-                            try {
-                                if (isSignedIn) {
-                                    await signOut()
+                    <div className="flex gap-2">
+                        <Button
+                            type="button"
+                            variant="outline"
+                            className="flex-1 text-sm sm:text-base"
+                            onClick={async () => {
+                                try {
+                                    setError('')
+                                    if (signUp) {
+                                        await signUp.prepareEmailAddressVerification({
+                                            strategy: "email_code"
+                                        })
+                                        setSuccess('Verification code resent!')
+                                    } else {
+                                        setError('Unable to resend code. Please refresh and try again.')
+                                    }
+                                } catch (err) {
+                                    console.error('Resend error:', err)
+                                    setError('Failed to resend code. Please try again.')
                                 }
-                            } catch (err) {
-                                // Ignore errors when resetting
-                                console.warn('Reset session warning:', err)
-                            }
-                        }}
-                    >
-                        Back to Sign Up
-                    </Button>
+                            }}
+                        >
+                            Resend Code
+                        </Button>
+                        <Button
+                            type="button"
+                            variant="ghost"
+                            className="flex-1 text-sm sm:text-base"
+                            onClick={async () => {
+                                setPendingVerification(false)
+                                setVerificationCode('')
+                                setError('')
+                                setSuccess('')
+                                // Clear any existing sessions to start fresh
+                                try {
+                                    if (isSignedIn) {
+                                        await signOut()
+                                    }
+                                } catch (err) {
+                                    // Ignore errors when resetting
+                                    console.warn('Reset session warning:', err)
+                                }
+                            }}
+                        >
+                            Back to Sign Up
+                        </Button>
+                    </div>
                 </form>
             </Card>
         )

@@ -1,4 +1,4 @@
-import { Navigation } from "@/components/navigation"
+import { AuthNavigation } from "@/components/auth-navigation"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Shield, UserPlus } from "lucide-react"
@@ -7,7 +7,7 @@ import Link from "next/link"
 export default function SignInPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <AuthNavigation />
 
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-md mx-auto">
@@ -33,6 +33,15 @@ export default function SignInPage() {
                   Create Your Account
                 </Link>
               </Button>
+
+              <div className="text-center pt-4 border-t border-border">
+                <p className="text-xs text-muted-foreground mb-2">Already have an account but forgot your password?</p>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/forgot-password" className="text-sm text-primary hover:text-primary/80">
+                    Reset Password
+                  </Link>
+                </Button>
+              </div>
             </div>
           </Card>
         </div>

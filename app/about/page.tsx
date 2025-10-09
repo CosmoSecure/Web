@@ -1,4 +1,4 @@
-import { Navigation } from "@/components/navigation"
+import { AuthNavigation } from "@/components/auth-navigation"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Shield, Github, Linkedin, Mail, Code, Heart, User, ExternalLink, Coffee } from "lucide-react"
@@ -7,7 +7,7 @@ import { CONTACT, DOCS, SUPPORT, NAVIGATION, DOWNLOADS } from "@/config/links"
 export default function AboutPage() {
     return (
         <div className="min-h-screen bg-background">
-            <Navigation />
+            <AuthNavigation />
 
             {/* Hero Section */}
             <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
