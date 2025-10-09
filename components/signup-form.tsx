@@ -647,6 +647,15 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
                         )}
                     </Button>
 
+                    <div className="text-center">
+                        <p className="text-sm text-muted-foreground">
+                            Have an account?{' '}
+                            <a href="/login" className="text-primary hover:text-primary/80 transition-colors font-medium">
+                                Log In
+                            </a>
+                        </p>
+                    </div>
+
                     <p className="text-xs sm:text-sm text-muted-foreground text-center px-2 leading-relaxed">
                         By creating an account, you agree to keep your passwords secure with CosmoSecure.
                     </p>

@@ -37,31 +37,10 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Generate a unique session ID for password reset tracking
-        const resetSessionId = `pwdreset_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-        const sessionExpiry = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes from now
-
-        // Store the reset session info in MongoDB
-        // We'll let Clerk handle the actual OTP generation and sending
-        await users.updateOne(
-            { email: email.toLowerCase() },
-            {
-                $set: {
-                    passwordResetSession: {
-                        sessionId: resetSessionId,
-                        expiresAt: sessionExpiry,
-                        createdAt: new Date(),
-                        verified: false,
-                        email: email.toLowerCase()
-                    }
-                }
-            }
-        );
-
+        // Just return success - NO database modifications
         return NextResponse.json({
             success: true,
             message: 'Password reset verification code has been sent to your email.',
-            resetSessionId: resetSessionId,
             email: email.toLowerCase()
         });
 

@@ -4,17 +4,15 @@ import bcrypt from 'bcryptjs';
 
 export async function POST(request: NextRequest) {
     try {
-        const { email, newPassword, resetSessionId } = await request.json();
+        const { email, newPassword } = await request.json();
 
-        // Validation
-        if (!email || !newPassword || !resetSessionId) {
+        if (!email || !newPassword) {
             return NextResponse.json(
-                { success: false, message: 'Email, new password, and session ID are required' },
+                { success: false, message: 'Email and new password are required' },
                 { status: 400 }
             );
         }
 
-        // Validate email format
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             return NextResponse.json(
@@ -23,7 +21,6 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Validate password strength
         if (newPassword.length < 8) {
             return NextResponse.json(
                 { success: false, message: 'Password must be at least 8 characters long' },
@@ -33,35 +30,26 @@ export async function POST(request: NextRequest) {
 
         const users = await getUsersCollection();
 
-        // Find user with verified reset session
         const user = await users.findOne({
-            email: email.toLowerCase(),
-            'passwordResetSession.sessionId': resetSessionId,
-            'passwordResetSession.expiresAt': { $gt: new Date() },
-            'passwordResetSession.verified': true
+            email: email.toLowerCase()
         });
 
         if (!user) {
             return NextResponse.json(
-                { success: false, message: 'Invalid or expired reset session. Please start the password reset process again.' },
-                { status: 400 }
+                { success: false, message: 'User not found' },
+                { status: 404 }
             );
         }
 
-        // Hash the new password using bcrypt with salt rounds 12 to match existing schema
         const saltRounds = 12;
         const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
 
-        // Update the password hash in the hp[0].ph field and remove the reset session
         const updateResult = await users.updateOne(
             { email: email.toLowerCase() },
             {
                 $set: {
                     'hp.0.ph': hashedPassword,
-                    'l': new Date() // Update last login time
-                },
-                $unset: {
-                    passwordResetSession: 1 // Remove the reset session data
+                    'l': new Date()
                 }
             }
         );

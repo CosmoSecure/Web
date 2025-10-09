@@ -34,6 +34,8 @@ export function AuthNavigation() {
         }
     }
 
+    const isLoggedIn = typeof window !== 'undefined' && sessionStorage.getItem('isLoggedIn') === 'true';
+
     return (
         <nav className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,20 +83,29 @@ export function AuthNavigation() {
                         {/* Auth Buttons */}
                         {isLoaded && (
                             <>
-                                {isSignedIn ? (
+                                {(isSignedIn || isLoggedIn) ? (
                                     <Button
                                         size="sm"
                                         variant="outline"
-                                        onClick={handleSignOut}
+                                        onClick={() => {
+                                            handleSignOut();
+                                            sessionStorage.removeItem('isLoggedIn'); // Clear session on logout
+                                            window.location.reload(); // Force navigation to re-render
+                                        }}
                                         className="flex items-center gap-2"
                                     >
                                         <LogOut className="h-4 w-4" />
                                         Sign Out
                                     </Button>
                                 ) : (
-                                    <Link href="/signup">
-                                        <Button size="sm">Sign Up</Button>
-                                    </Link>
+                                    <div className="flex items-center gap-2">
+                                        <Link href="/login">
+                                            <Button size="sm" variant="outline">Sign In</Button>
+                                        </Link>
+                                        <Link href="/signup">
+                                            <Button size="sm">Sign Up</Button>
+                                        </Link>
+                                    </div>
                                 )}
                             </>
                         )}
@@ -154,7 +165,7 @@ export function AuthNavigation() {
 
                             {/* Mobile Auth Buttons */}
                             {isLoaded && (
-                                <div className="pt-2">
+                                <div className="pt-2 space-y-2">
                                     {isSignedIn ? (
                                         <Button
                                             size="sm"
@@ -169,11 +180,18 @@ export function AuthNavigation() {
                                             Sign Out
                                         </Button>
                                     ) : (
-                                        <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                                            <Button size="sm" className="w-full justify-center">
-                                                Sign Up
-                                            </Button>
-                                        </Link>
+                                        <>
+                                            <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                                                <Button size="sm" variant="outline" className="w-full justify-center">
+                                                    Sign In
+                                                </Button>
+                                            </Link>
+                                            <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                                                <Button size="sm" className="w-full justify-center">
+                                                    Sign Up
+                                                </Button>
+                                            </Link>
+                                        </>
                                     )}
                                 </div>
                             )}
