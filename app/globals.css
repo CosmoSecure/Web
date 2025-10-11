@@ -124,3 +124,100 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Enhanced UI Effects */
+@layer components {
+  /* Smooth transitions for all interactive elements */
+  .transition-smooth {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Enhanced card hover effects */
+  .card-hover {
+    transition: all 0.3s ease-in-out;
+  }
+  .card-hover:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 20px rgba(var(--primary), 0.1);
+    transform: translateY(-4px);
+    border-color: rgba(var(--primary), 0.3);
+  }
+
+  /* Button hover enhancements */
+  .btn-hover {
+    transition: all 0.2s ease-in-out;
+  }
+  .btn-hover:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 15px rgba(var(--primary), 0.25);
+    transform: translateY(-2px);
+  }
+
+  /* Input field enhancements */
+  .input-hover {
+    transition: all 0.2s ease-in-out;
+  }
+  .input-hover:focus {
+    box-shadow: 0 0 0 3px rgba(var(--primary), 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: rgba(var(--primary), 0.5);
+  }
+
+  /* Navigation link enhancements */
+  .nav-link-hover {
+    transition: all 0.2s ease-in-out;
+  }
+  .nav-link-hover:hover {
+    color: var(--primary);
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Logo hover effects */
+  .logo-hover {
+    transition: all 0.3s ease-in-out;
+  }
+  .logo-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 20px rgba(var(--primary), 0.2);
+  }
+
+  /* Modal backdrop blur enhancement */
+  .modal-backdrop {
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  /* Gradient text effects */
+  .text-gradient {
+    background: linear-gradient(to right, var(--primary), rgba(var(--primary), 0.7));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Glow effects for special elements */
+  .glow-primary {
+    box-shadow: 0 0 20px rgba(var(--primary), 0.3);
+  }
+
+  .glow-hover {
+    transition: all 0.3s ease-in-out;
+  }
+  .glow-hover:hover {
+    box-shadow: 0 0 25px rgba(var(--primary), 0.4);
+  }
+
+  /* Enhanced shadow utilities */
+  .shadow-glow {
+    box-shadow: 0 0 30px rgba(var(--primary), 0.15);
+  }
+
+  .shadow-card {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-card-hover {
+    transition: all 0.3s ease-in-out;
+  }
+  .shadow-card-hover:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
