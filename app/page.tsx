@@ -69,14 +69,14 @@ export default function HomePage() {
       {/* Distribution Selector Modal */}
       {showDistroSelector && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 transition-smooth"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
               closeModal()
             }
           }}
         >
-          <div className="bg-background border border-border rounded-lg shadow-2xl max-w-md w-full max-h-[80vh] overflow-y-auto">
+          <div className="bg-background border border-border rounded-lg shadow-2xl max-w-md w-full max-h-[80vh] overflow-y-auto card-hover">
             <div className="flex items-center justify-between p-6 border-b border-border">
               <div className="flex items-center gap-3">
                 <div className="bg-primary/10 p-2 rounded-lg">
@@ -104,7 +104,7 @@ export default function HomePage() {
                   <button
                     key={index}
                     onClick={() => setSelectedDistro(index)}
-                    className="w-full text-left p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-all group"
+                    className="w-full text-left p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-all group card-hover"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-6 h-6 flex items-center justify-center">{distro.icon}</div>
@@ -201,7 +201,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 glow-hover">
             <Shield className="h-4 w-4" />
             <span>Open Source Password Manager</span>
           </div>
@@ -218,7 +218,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground btn-hover"
               onClick={() => setShowDistroSelector(true)}
             >
               <Download className="mr-2 h-5 w-5" />
@@ -228,7 +228,7 @@ export default function HomePage() {
             <Button
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto border-primary/50 hover:bg-primary/10 bg-transparent"
+              className="w-full sm:w-auto border-primary/50 hover:bg-primary/10 bg-transparent btn-hover"
               asChild
             >
               <a href={DOWNLOADS.windows.exe}>
@@ -243,8 +243,8 @@ export default function HomePage() {
       {/* Features Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          <Card className="p-6 bg-card border-border hover:border-primary/50 transition-colors">
-            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+          <Card className="p-6 bg-card border-border card-hover">
+            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 glow-hover">
               <Shield className="h-6 w-6 text-primary" />
             </div>
             <h3 className="text-xl font-semibold text-card-foreground mb-2">Secure Storage</h3>
@@ -253,8 +253,8 @@ export default function HomePage() {
             </p>
           </Card>
 
-          <Card className="p-6 bg-card border-border hover:border-primary/50 transition-colors">
-            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+          <Card className="p-6 bg-card border-border card-hover">
+            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 glow-hover">
               <Lock className="h-6 w-6 text-primary" />
             </div>
             <h3 className="text-xl font-semibold text-card-foreground mb-2">Password Management</h3>
@@ -263,8 +263,8 @@ export default function HomePage() {
             </p>
           </Card>
 
-          <Card className="p-6 bg-card border-border hover:border-primary/50 transition-colors">
-            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+          <Card className="p-6 bg-card border-border card-hover">
+            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 glow-hover">
               <Zap className="h-6 w-6 text-primary" />
             </div>
             <h3 className="text-xl font-semibold text-card-foreground mb-2">Lightweight & Fast</h3>
@@ -284,9 +284,9 @@ export default function HomePage() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <Card className="p-8 bg-card border-border hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10">
+            <Card className="p-8 bg-card border-border card-hover">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-primary/10 p-3 rounded-lg">
+                <div className="bg-primary/10 p-3 rounded-lg glow-hover">
                   <FaLinux className="h-8 w-8 text-primary" />
                 </div>
                 <div>
@@ -309,7 +309,7 @@ export default function HomePage() {
                 </li>
               </ul>
               <Button
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground btn-hover"
                 size="lg"
                 onClick={() => setShowDistroSelector(true)}
               >
@@ -319,9 +319,9 @@ export default function HomePage() {
               </Button>
             </Card>
 
-            <Card className="p-8 bg-card border-border hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10">
+            <Card className="p-8 bg-card border-border card-hover">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-primary/10 p-3 rounded-lg">
+                <div className="bg-primary/10 p-3 rounded-lg glow-hover">
                   <svg className="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
                   </svg>
@@ -345,7 +345,7 @@ export default function HomePage() {
                   <span>Minimal resource usage</span>
                 </li>
               </ul>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" size="lg" asChild>
+              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground btn-hover" size="lg" asChild>
                 <a href={DOWNLOADS.windows.exe}>
                   <Download className="mr-2 h-5 w-5" />
                   Download for Windows

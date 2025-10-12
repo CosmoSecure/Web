@@ -41,7 +41,7 @@ export function AuthNavigation() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 group">
+                    <Link href="/" className="flex items-center gap-2 group logo-hover">
                         <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
                             <Shield className="h-6 w-6 text-primary" />
                         </div>
@@ -58,7 +58,7 @@ export function AuthNavigation() {
                                     <a
                                         key={link.href}
                                         href={link.href}
-                                        className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground"
+                                        className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground nav-link-hover"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -71,7 +71,7 @@ export function AuthNavigation() {
                                     key={link.href}
                                     href={link.href}
                                     className={cn(
-                                        "text-sm font-medium transition-colors hover:text-primary",
+                                        "text-sm font-medium transition-colors hover:text-primary nav-link-hover",
                                         pathname === link.href ? "text-primary" : "text-muted-foreground",
                                     )}
                                 >
@@ -92,7 +92,7 @@ export function AuthNavigation() {
                                             sessionStorage.removeItem('isLoggedIn'); // Clear session on logout
                                             window.location.reload(); // Force navigation to re-render
                                         }}
-                                        className="flex items-center gap-2"
+                                        className="flex items-center gap-2 btn-hover"
                                     >
                                         <LogOut className="h-4 w-4" />
                                         Sign Out
@@ -100,10 +100,10 @@ export function AuthNavigation() {
                                 ) : (
                                     <div className="flex items-center gap-2">
                                         <Link href="/login">
-                                            <Button size="sm" variant="outline">Sign In</Button>
+                                            <Button size="sm" variant="outline" className="btn-hover">Sign In</Button>
                                         </Link>
                                         <Link href="/signup">
-                                            <Button size="sm">Sign Up</Button>
+                                            <Button size="sm" className="btn-hover">Sign Up</Button>
                                         </Link>
                                     </div>
                                 )}
@@ -174,7 +174,7 @@ export function AuthNavigation() {
                                                 handleSignOut()
                                                 setIsMobileMenuOpen(false)
                                             }}
-                                            className="w-full justify-center flex items-center gap-2"
+                                            className="w-full justify-center flex items-center gap-2 btn-hover"
                                         >
                                             <LogOut className="h-4 w-4" />
                                             Sign Out
@@ -182,12 +182,12 @@ export function AuthNavigation() {
                                     ) : (
                                         <>
                                             <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                                                <Button size="sm" variant="outline" className="w-full justify-center">
+                                                <Button size="sm" variant="outline" className="w-full justify-center btn-hover">
                                                     Sign In
                                                 </Button>
                                             </Link>
                                             <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                                                <Button size="sm" className="w-full justify-center">
+                                                <Button size="sm" className="w-full justify-center btn-hover">
                                                     Sign Up
                                                 </Button>
                                             </Link>
