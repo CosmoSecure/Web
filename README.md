@@ -127,4 +127,6 @@ Modify `app/globals.css` to adjust colors, fonts, and design tokens to match you
 
 ## License
 
-All rights reserved © 2025 CosmoSecure
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+© 2025 CosmoSecure
