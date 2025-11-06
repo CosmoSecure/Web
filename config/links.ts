@@ -10,6 +10,7 @@ export const NAVIGATION = {
     home: "/",
     features: "/features",
     about: "/about",
+    donate: "/donate",
 } as const
 
 // Documentation

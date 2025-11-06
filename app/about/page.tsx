@@ -2,7 +2,9 @@ import { AuthNavigation } from "@/components/auth-navigation"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Shield, Github, Linkedin, Mail, Code, Heart, User, ExternalLink, Coffee } from "lucide-react"
-import { CONTACT, DOCS, SUPPORT, NAVIGATION, DOWNLOADS } from "@/config/links"
+
+import { CONTACT, DOCS, SUPPORT } from "@/config/links"
+import { Footer } from "@/components/footer"
 
 export default function AboutPage() {
     return (
@@ -93,15 +95,17 @@ export default function AboutPage() {
 
                     {/* Developer Section */}
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-foreground mb-8">Meet the Developer</h2>
-                        <div className="max-w-2xl mx-auto">
-                            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                                Hi! I'm <span className="font-semibold text-foreground">Akash Soni</span>, the developer behind CosmoSecure. I'm passionate about cybersecurity,
-                                privacy, and building tools that empower users to take control of their digital security.
-                                CosmoSecure represents my commitment to creating software that respects user privacy
-                                while delivering exceptional functionality.
-                            </p>
-                        </div>
+                        <Card className="p-6 bg-card border-border">
+                            <h2 className="text-3xl font-bold text-foreground mb-8">Meet the Creator</h2>
+                            <div className="max-w-2xl mx-auto">
+                                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                                    Hi! I'm <span className="font-semibold text-foreground">Akash Soni</span>, the developer behind <strong className="hover:text-foreground transform transition duration-300 ease-in-out">CosmoSecure</strong>. I'm passionate about cybersecurity,
+                                    privacy, and building tools that empower users to take control of their digital security.
+                                    CosmoSecure represents my commitment to creating software that respects user privacy
+                                    while delivering exceptional functionality.
+                                </p>
+                            </div>
+                        </Card>
                     </div>
 
                     {/* Contact Section */}
@@ -139,9 +143,9 @@ export default function AboutPage() {
                             </Button>
 
                             <Button size="lg" variant="outline" className="w-full sm:w-auto border-yellow-500/50 hover:bg-yellow-500/10 text-yellow-600 hover:text-yellow-700" asChild>
-                                <a href={CONTACT.social.buyMeACoffee} target="_blank" rel="noopener noreferrer">
+                                <a href="/donate">
                                     <Coffee className="mr-2 h-5 w-5" />
-                                    Buy Me a Coffee
+                                    Support Us ❤️
                                     <ExternalLink className="ml-2 h-4 w-4" />
                                 </a>
                             </Button>
@@ -211,28 +215,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="border-t border-border mt-20">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div className="flex items-center gap-2">
-                            <Shield className="h-5 w-5 text-primary" />
-                            <span className="text-sm text-muted-foreground">© 2025 CosmoSecure. All rights reserved.</span>
-                        </div>
-                        <div className="flex items-center gap-6">
-                            <a href={NAVIGATION.about} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                                About
-                            </a>
-                            <a href={DOCS.readme} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                                Documentation
-                            </a>
-                            <a href={SUPPORT.issues} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                                Support
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }
