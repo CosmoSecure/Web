@@ -1,8 +1,7 @@
 import { AuthNavigation } from "@/components/auth-navigation"
 import { LoginForm } from "@/components/login-form"
-import { Shield, UserPlus } from "lucide-react"
-import { NAVIGATION } from "@/config/links"
-import Link from "next/link"
+import { Shield } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export default function LoginPage() {
     return (
@@ -27,29 +26,7 @@ export default function LoginPage() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="border-t border-border mt-auto">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div className="flex items-center gap-2">
-                            <Shield className="h-5 w-5 text-primary" />
-                            <span className="text-sm text-muted-foreground">© 2025 CosmoSecure. All rights reserved.</span>
-                        </div>
-                        <div className="flex items-center gap-6">
-                            <Link href={NAVIGATION.about} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                                About
-                            </Link>
-                            <Link href="/features" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                                Features
-                            </Link>
-                            <Link href="/signup" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
-                                <UserPlus className="h-4 w-4" />
-                                Sign Up
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }

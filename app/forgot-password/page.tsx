@@ -1,8 +1,8 @@
 import { AuthNavigation } from "@/components/auth-navigation"
 import { ForgotPasswordForm } from "@/components/forgot-password-form"
 import { Shield, ArrowLeft } from "lucide-react"
-import { NAVIGATION } from "@/config/links"
 import Link from "next/link"
+import { Footer } from "@/components/footer"
 
 export default function ForgotPasswordPage() {
     return (
@@ -35,28 +35,7 @@ export default function ForgotPasswordPage() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="border-t border-border mt-auto">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div className="flex items-center gap-2">
-                            <Shield className="h-5 w-5 text-primary" />
-                            <span className="text-sm text-muted-foreground">© 2025 CosmoSecure. All rights reserved.</span>
-                        </div>
-                        <div className="flex items-center gap-6">
-                            <Link href={NAVIGATION.about} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                                About
-                            </Link>
-                            <Link href="/features" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                                Features
-                            </Link>
-                            <Link href="/sign-in" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                                Sign In
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
         </div>
     )
 }
