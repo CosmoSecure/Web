@@ -116,7 +116,7 @@ export default function HomePage() {
                           {distro.description}
                         </div>
                       </div>
-                      <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors rotate-[-90deg]" />
+                      <ChevronDown className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors -rotate-90" />
                     </div>
                   </button>
                 ))
@@ -142,7 +142,7 @@ export default function HomePage() {
                     <div className="space-y-2">
                       {distributions[selectedDistro].instructions.map((instruction, idx) => (
                         <div key={idx} className="flex items-start gap-3 p-3 bg-muted/30 rounded-lg">
-                          <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                             <span className="text-xs font-medium text-primary">{idx + 1}</span>
                           </div>
                           <p className="text-sm text-foreground leading-relaxed">
