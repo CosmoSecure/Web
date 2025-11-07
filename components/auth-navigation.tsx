@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { NAVIGATION, DOCS } from "@/config/links"
 import { useAuth, useClerk } from "@clerk/nextjs"
+import Image from "next/image"
+import { Icon } from "../assets/"
 
 export function AuthNavigation() {
     const pathname = usePathname()
@@ -41,13 +43,8 @@ export function AuthNavigation() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 group logo-hover">
-                        <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
-                            <Shield className="h-6 w-6 text-primary" />
-                        </div>
-                        <span className="text-lg sm:text-xl font-bold text-foreground">
-                            Cosmo<span className="text-primary">Secure</span>
-                        </span>
+                    <Link href="/" className="flex justify-center items-center">
+                        <Image src={Icon} alt="CosmoSecure Logo" className="h-[3.7rem] w-auto" />
                     </Link>
 
                     {/* Desktop Navigation */}
