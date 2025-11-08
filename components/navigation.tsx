@@ -31,7 +31,7 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex justify-center items-center">
-            <Image src={Icon} alt="CosmoSecure Logo" className="h-[3.7rem] w-auto" />
+            <Image src={Icon} alt="CosmoSecure Logo" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
