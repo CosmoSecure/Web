@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card"
 import { Download, Shield, Lock, Zap, CheckCircle2, ChevronDown, X } from "lucide-react"
 import { FaLinux, FaRedhat, FaDebian } from "react-icons/fa6"
 import { DOWNLOADS, DOCS, SUPPORT } from "@/config/links"
-import { AnimatedElement, AnimatedCard, StaggeredContainer, ParallaxElement } from "@/components/animated-elements"
+
 import { CometShower } from "@/components/comet-shower"
 import { Aurora } from "@/components/aurora"
 
@@ -213,18 +213,14 @@ export default function HomePage() {
             <span>Open Source Password Manager</span>
           </div>
 
-          <AnimatedElement animation="slideUp" duration={700} delay={100}>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
-              Secure Password Manager with <span className="text-primary">CosmoSecure</span>
-            </h1>
-          </AnimatedElement>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+            Secure Password Manager with <span className="text-primary">CosmoSecure</span>
+          </h1>
 
-          <AnimatedElement animation="slideUp" duration={700} delay={200}>
-            <p className="text-lg sm:text-xl text-muted-foreground mb-10 text-pretty max-w-2xl mx-auto leading-relaxed">
-              A robust and secure password manager desktop application built with Tauri, Rust, and React.
-              Keep your credentials safe with state-of-the-art AES encryption and intuitive design.
-            </p>
-          </AnimatedElement>
+          <p className="text-lg sm:text-xl text-muted-foreground mb-10 text-pretty max-w-2xl mx-auto leading-relaxed">
+            A robust and secure password manager desktop application built with Tauri, Rust, and React.
+            Keep your credentials safe with state-of-the-art AES encryption and intuitive design.
+          </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
@@ -253,132 +249,118 @@ export default function HomePage() {
 
       {/* Features Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <StaggeredContainer className="grid md:grid-cols-3 gap-6 lg:gap-8" itemDelay={150}>
-          <AnimatedCard>
-            <Card className="p-6 bg-card border-border">
-              <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 glow-hover">
-                <Shield className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-card-foreground mb-2">Secure Storage</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                State-of-the-art AES encryption to protect your passwords with zero-knowledge architecture.
-              </p>
-            </Card>
-          </AnimatedCard>
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <Card className="p-6 bg-card border-border">
+            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 glow-hover">
+              <Shield className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold text-card-foreground mb-2">Secure Storage</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              State-of-the-art AES encryption to protect your passwords with zero-knowledge architecture.
+            </p>
+          </Card>
 
-          <AnimatedCard>
-            <Card className="p-6 bg-card border-border">
-              <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 glow-hover">
-                <Lock className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-card-foreground mb-2">Password Management</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Effortlessly add, edit, delete, and view stored passwords with intuitive interface design.
-              </p>
-            </Card>
-          </AnimatedCard>
+          <Card className="p-6 bg-card border-border">
+            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 glow-hover">
+              <Lock className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold text-card-foreground mb-2">Password Management</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Effortlessly add, edit, delete, and view stored passwords with intuitive interface design.
+            </p>
+          </Card>
 
-          <AnimatedCard>
-            <Card className="p-6 bg-card border-border">
-              <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 glow-hover">
-                <Zap className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-card-foreground mb-2">Lightweight & Fast</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Built with Tauri for high performance. Available as AppImage, .deb, and .rpm packages for Linux, plus Windows installer.
-              </p>
-            </Card>
-          </AnimatedCard>
-        </StaggeredContainer>
+          <Card className="p-6 bg-card border-border">
+            <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 glow-hover">
+              <Zap className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold text-card-foreground mb-2">Lightweight & Fast</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Built with Tauri for high performance. Available as AppImage, .deb, and .rpm packages for Linux, plus Windows installer.
+            </p>
+          </Card>
+        </div>
       </section>
 
       {/* Download Section */}
       <section id="download" className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-4xl mx-auto">
-          <AnimatedElement animation="slideUp" duration={600}>
-            <h2 className="text-3xl sm:text-4xl font-bold text-center text-foreground mb-4">Download CosmoSecure</h2>
-          </AnimatedElement>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-foreground mb-4">Download CosmoSecure</h2>
 
-          <AnimatedElement animation="slideUp" duration={600} delay={100}>
-            <p className="text-center text-muted-foreground mb-12 text-lg">
-              Choose your platform and get started in minutes
-            </p>
-          </AnimatedElement>
+          <p className="text-center text-muted-foreground mb-12 text-lg">
+            Choose your platform and get started in minutes
+          </p>
 
-          <StaggeredContainer className="grid md:grid-cols-2 gap-6" itemDelay={150}>
-            <AnimatedCard>
-              <Card className="p-8 bg-card border-border">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-primary/10 p-3 rounded-lg glow-hover">
-                    <FaLinux className="h-8 w-8 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-card-foreground">Linux</h3>
-                    <p className="text-sm text-muted-foreground">Choose your distribution and package format</p>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="p-8 bg-card border-border">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-primary/10 p-3 rounded-lg glow-hover">
+                  <FaLinux className="h-8 w-8 text-primary" />
                 </div>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
-                    <span>AppImage (Universal)</span>
-                  </li>
-                  <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
-                    <span>.deb (Debian/Ubuntu)</span>
-                  </li>
-                  <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
-                    <span>.rpm (Red Hat/Fedora)</span>
-                  </li>
-                </ul>
-                <Button
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground btn-hover"
-                  size="lg"
-                  onClick={() => setShowDistroSelector(true)}
-                >
+                <div>
+                  <h3 className="text-2xl font-bold text-card-foreground">Linux</h3>
+                  <p className="text-sm text-muted-foreground">Choose your distribution and package format</p>
+                </div>
+              </div>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                  <span>AppImage (Universal)</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                  <span>.deb (Debian/Ubuntu)</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                  <span>.rpm (Red Hat/Fedora)</span>
+                </li>
+              </ul>
+              <Button
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground btn-hover"
+                size="lg"
+                onClick={() => setShowDistroSelector(true)}
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Choose Distribution
+                <ChevronDown className="ml-2 h-4 w-4" />
+              </Button>
+            </Card>
+
+            <Card className="p-8 bg-card border-border">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-primary/10 p-3 rounded-lg glow-hover">
+                  <svg className="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-card-foreground">Windows</h3>
+                  <p className="text-sm text-muted-foreground">Windows 10, 11 (x64)</p>
+                </div>
+              </div>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                  <span>Easy installer package</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                  <span>User-friendly interface</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                  <span>Minimal resource usage</span>
+                </li>
+              </ul>
+              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground btn-hover" size="lg" asChild>
+                <a href={DOWNLOADS.windows.exe}>
                   <Download className="mr-2 h-5 w-5" />
-                  Choose Distribution
-                  <ChevronDown className="ml-2 h-4 w-4" />
-                </Button>
-              </Card>
-            </AnimatedCard>
-
-            <AnimatedCard delay={150}>
-              <Card className="p-8 bg-card border-border">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-primary/10 p-3 rounded-lg glow-hover">
-                    <svg className="h-8 w-8 text-primary" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-card-foreground">Windows</h3>
-                    <p className="text-sm text-muted-foreground">Windows 10, 11 (x64)</p>
-                  </div>
-                </div>
-                <ul className="space-y-2 mb-6">
-                  <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
-                    <span>Easy installer package</span>
-                  </li>
-                  <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
-                    <span>User-friendly interface</span>
-                  </li>
-                  <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CheckCircle2 className="h-4 w-4 text-primary" />
-                    <span>Minimal resource usage</span>
-                  </li>
-                </ul>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground btn-hover" size="lg" asChild>
-                  <a href={DOWNLOADS.windows.exe}>
-                    <Download className="mr-2 h-5 w-5" />
-                    Download for Windows
-                  </a>
-                </Button>
-              </Card>
-            </AnimatedCard>
-          </StaggeredContainer>
+                  Download for Windows
+                </a>
+              </Button>
+            </Card>
+          </div>
         </div>
       </section>
 
