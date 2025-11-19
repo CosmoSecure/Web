@@ -248,6 +248,100 @@
    AURORA ANIMATION
    ============================================ */
 
+@keyframes color-cycle-1 {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  13% {
+    filter: hue-rotate(15deg);
+  }
+
+  27% {
+    filter: hue-rotate(45deg);
+  }
+
+  41% {
+    filter: hue-rotate(90deg);
+  }
+
+  58% {
+    filter: hue-rotate(120deg);
+  }
+
+  72% {
+    filter: hue-rotate(100deg);
+  }
+
+  85% {
+    filter: hue-rotate(30deg);
+  }
+
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes color-cycle-2 {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  18% {
+    filter: hue-rotate(25deg);
+  }
+
+  35% {
+    filter: hue-rotate(70deg);
+  }
+
+  52% {
+    filter: hue-rotate(120deg);
+  }
+
+  68% {
+    filter: hue-rotate(110deg);
+  }
+
+  82% {
+    filter: hue-rotate(20deg);
+  }
+
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes color-cycle-3 {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  22% {
+    filter: hue-rotate(35deg);
+  }
+
+  39% {
+    filter: hue-rotate(85deg);
+  }
+
+  57% {
+    filter: hue-rotate(120deg);
+  }
+
+  74% {
+    filter: hue-rotate(100deg);
+  }
+
+  88% {
+    filter: hue-rotate(15deg);
+  }
+
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
 @keyframes aurora-reveal {
   0% {
     opacity: 0;
@@ -685,30 +779,30 @@
 
   .aurora-1 {
     background: radial-gradient(ellipse 80% 50% at 50% -20%,
-        rgba(52, 211, 153, 0.5) 0%,
-        rgba(6, 182, 212, 0.4) 25%,
+        rgba(236, 72, 153, 0.5) 0%,
+        rgba(168, 85, 247, 0.4) 25%,
         rgba(168, 85, 247, 0.35) 50%,
-        rgba(6, 182, 212, 0.3) 75%,
+        rgba(52, 211, 153, 0.3) 75%,
         transparent 100%);
-    animation: aurora-reveal 2s ease-in 0s forwards, aurora-1 15s ease-in-out 3s infinite;
+    animation: aurora-reveal 2s ease-in 0s forwards, aurora-1 15s ease-in-out 3s infinite, color-cycle-1 11.7s linear 3s infinite;
   }
 
   .aurora-2 {
     background: radial-gradient(ellipse 70% 40% at 30% 20%,
         rgba(6, 182, 212, 0.4) 0%,
-        rgba(20, 184, 166, 0.35) 30%,
-        rgba(52, 211, 153, 0.3) 60%,
-        rgba(6, 182, 212, 0.25) 80%,
+        rgba(52, 211, 153, 0.35) 30%,
+        rgba(20, 184, 166, 0.3) 60%,
+        rgba(220, 38, 38, 0.25) 80%,
         transparent 100%);
-    animation: aurora-2-reveal 2s ease-in 0s forwards, aurora-2 20s ease-in-out 3s infinite;
+    animation: aurora-2-reveal 2s ease-in 0s forwards, aurora-2 20s ease-in-out 3s infinite, color-cycle-2 13.4s linear 3s infinite;
   }
 
   .aurora-3 {
     background: radial-gradient(ellipse 60% 35% at 70% 10%,
-        rgba(168, 85, 247, 0.45) 0%,
-        rgba(6, 182, 212, 0.35) 40%,
-        rgba(6, 182, 212, 0.3) 70%,
+        rgba(6, 182, 212, 0.45) 0%,
+        rgba(236, 72, 153, 0.35) 40%,
+        rgba(168, 85, 247, 0.3) 70%,
         transparent 100%);
-    animation: aurora-reveal 2s ease-in 0s forwards, aurora-3 18s ease-in-out 3s infinite;
+    animation: aurora-reveal 2s ease-in 0s forwards, aurora-3 18s ease-in-out 3s infinite, color-cycle-3 9.8s linear 3s infinite;
   }
 }
