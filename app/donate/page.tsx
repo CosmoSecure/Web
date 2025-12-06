@@ -1,6 +1,8 @@
 "use client"
 
+import { Aurora } from "@/components/aurora";
 import { AuthNavigation } from "@/components/auth-navigation";
+import { CometShower } from "@/components/comet-shower";
 import { Footer } from "@/components/footer";
 
 
@@ -8,6 +10,8 @@ export default function DonatePage() {
     return (
         <div className="min-h-screen bg-background flex flex-col">
             <AuthNavigation />
+            <CometShower />
+            <Aurora />
             <main className="flex-1 flex flex-col items-center justify-center px-4 py-16">
                 <h1 className="text-6xl font-bold text-foreground mb-2 text-center">Donate</h1>
 

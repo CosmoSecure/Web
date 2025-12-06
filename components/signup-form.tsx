@@ -267,7 +267,7 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
 
                         setSuccess('Email verified! Account created successfully!')
                         setTimeout(() => {
-                            router.push('/features')
+                            router.push('/')
                             onSuccess?.()
                         }, 1000) // Reduced delay for faster UX
                     } else {
@@ -295,7 +295,7 @@ export function SignupForm({ onSuccess }: SignupFormProps) {
                         }
                         setSuccess('Account verified successfully!')
                         setTimeout(() => {
-                            router.push('/features')
+                            router.push('/')
                             onSuccess?.()
                         }, 1000)
                         return
