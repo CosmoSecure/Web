@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
             { email: email.toLowerCase() },
             {
                 $set: {
-                    'hp.0.ph': hashedPassword,
+                    'ep.ph': hashedPassword,
                     'l': new Date()
                 }
             }

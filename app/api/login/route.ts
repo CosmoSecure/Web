@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Check if user has a password hash
-        if (!user.hp || !user.hp[0] || !user.hp[0].ph) {
+        if (!user.ep || !user.ep.ph) {
             return NextResponse.json(
                 { success: false, message: 'Account not properly configured. Please contact support.' },
                 { status: 500 }
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Verify password
-        const isValidPassword = await bcrypt.compare(password, user.hp[0].ph)
+        const isValidPassword = await bcrypt.compare(password, user.ep.ph)
 
         if (!isValidPassword) {
             return NextResponse.json(
