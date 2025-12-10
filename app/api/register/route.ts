@@ -59,14 +59,10 @@ export async function POST(request: NextRequest) {
             ui: userId, // user_id as ObjectId string
             username: username.toLowerCase(),
             n: name, // name
-            hp: [{
+            ep: {
                 ph: hashedPassword, // password hash (ph instead of hash)
-                mp: {
-                    ph: "", // master password hash (empty initially)
-                    s: "",  // salt (empty initially)
-                    c: now  // created date for master password
-                }
-            }], // hashed_password array
+                zkp: null
+            }, // hashed_password object
             email: email.toLowerCase(),
             c: now, // created_at
             l: now, // last_login (set to creation time initially)
