@@ -31,9 +31,19 @@ export function AuthNavigation() {
 
     const handleSignOut = async () => {
         try {
-            await signOut()
+            // Clear session storage first
+            if (typeof window !== 'undefined') {
+                sessionStorage.removeItem('isLoggedIn');
+            }
+
+            // Sign out from Clerk
+            await signOut({ redirectUrl: '/' })
         } catch (error) {
             console.error('Sign out error:', error)
+            // Force redirect even if signOut fails
+            if (typeof window !== 'undefined') {
+                window.location.href = '/';
+            }
         }
     }
 
@@ -92,11 +102,7 @@ export function AuthNavigation() {
                                         <Button
                                             size="sm"
                                             variant="outline"
-                                            onClick={() => {
-                                                handleSignOut();
-                                                sessionStorage.removeItem('isLoggedIn'); // Clear session on logout
-                                                window.location.reload(); // Force navigation to re-render
-                                            }}
+                                            onClick={handleSignOut}
                                             className="flex items-center gap-2 btn-hover"
                                         >
                                             <LogOut className="h-4 w-4" />
@@ -171,13 +177,13 @@ export function AuthNavigation() {
                                 {/* Mobile Auth Buttons */}
                                 {isLoaded && (
                                     <div className="pt-2 space-y-2">
-                                        {isSignedIn ? (
+                                        {(isSignedIn || isLoggedIn) ? (
                                             <Button
                                                 size="sm"
                                                 variant="outline"
                                                 onClick={() => {
-                                                    handleSignOut()
-                                                    setIsMobileMenuOpen(false)
+                                                    setIsMobileMenuOpen(false);
+                                                    handleSignOut();
                                                 }}
                                                 className="w-full justify-center flex items-center gap-2 btn-hover"
                                             >
