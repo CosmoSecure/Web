@@ -7,7 +7,7 @@ let client: MongoClient;
 let db: Db;
 
 export async function connectToDatabase() {
-    if (!client) {
+    if (!client || !db) {
         client = new MongoClient(uri, {
             // Optimize connection for better performance
             maxPoolSize: 10, // Maintain up to 10 socket connections
