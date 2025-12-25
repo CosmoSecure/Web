@@ -66,20 +66,20 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
       <AuthNavigation />
 
       {/* Distribution Selector Modal */}
       {showDistroSelector && (
         <div
-          className="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-4 transition-smooth"
+          className="fixed inset-0 modal-backdrop z-50 flex items-center justify-center p-2 sm:p-4 transition-smooth overflow-y-auto"
           onClick={(e) => {
             if (e.target === e.currentTarget) {
               closeModal()
             }
           }}
         >
-          <div className="bg-background border border-border rounded-lg shadow-2xl max-w-md w-full max-h-[80vh] overflow-y-auto card-hover">
+          <div className="bg-background border border-border rounded-lg shadow-2xl max-w-md w-[calc(100vw-1rem)] sm:w-full max-h-[90vh] overflow-y-auto card-hover my-auto">
             <div className="flex items-center justify-between p-6 border-b border-border">
               <div className="flex items-center gap-3">
                 <div className="bg-primary/10 p-2 rounded-lg">
@@ -205,19 +205,19 @@ export default function HomePage() {
       <CometShower />
 
       {/* Hero Section */}
-      <section className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 relative overflow-hidden">
+      <section className="w-full mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-16 sm:py-20 lg:py-32 relative overflow-hidden">
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 glow-hover backdrop-blur-md">
             <Shield className="h-4 w-4" />
             <span>Open Source Password Manager</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance break-words px-2">
             Secure Password Manager with <span className="text-primary">CosmoSecure</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-muted-foreground mb-10 text-pretty max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-10 text-pretty max-w-2xl mx-auto leading-relaxed px-2 break-words">
             A robust and secure password manager desktop application built with Tauri, Rust, and React.
             Keep your credentials safe with state-of-the-art AES encryption and intuitive design.
           </p>
@@ -248,7 +248,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <section className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-16 sm:py-20">
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           <Card className="p-6 bg-card border-border">
             <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 glow-hover">
@@ -283,7 +283,7 @@ export default function HomePage() {
       </section>
 
       {/* Download Section */}
-      <section id="download" className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <section id="download" className="w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 py-16 sm:py-20">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-foreground mb-4">Download CosmoSecure</h2>
 
