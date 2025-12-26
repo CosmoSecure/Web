@@ -213,11 +213,11 @@ export default function HomePage() {
             <span>Open Source Password Manager</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance break-words px-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance wrap-break-word px-2">
             Secure Password Manager with <span className="text-primary">CosmoSecure</span>
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-10 text-pretty max-w-2xl mx-auto leading-relaxed px-2 break-words">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-10 text-pretty max-w-2xl mx-auto leading-relaxed px-2 wrap-break-word">
             A robust and secure password manager desktop application built with Tauri, Rust, and React.
             Keep your credentials safe with state-of-the-art AES encryption and intuitive design.
           </p>
